@@ -1,0 +1,1 @@
+# argocd-create-new-namespace
