@@ -1,0 +1,93 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-03-31T07:23:11Z"
+  generation: 40
+  name: namespace-creation
+  namespace: paas-gitops
+  resourceVersion: "131340"
+  uid: bc5d120c-92a7-467c-8b92-4335847c4196
+spec:
+  destination:
+    namespace: test-argocd-namespace
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/courses-and-testing/argocd-create-new-namespace.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+status:
+  health:
+    status: Progressing
+  operationState:
+    finishedAt: "2023-03-31T07:39:58Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        resources:
+        - kind: Service
+          name: hello-world-service
+          namespace: test-argocd-namespace
+        revision: 904d57e96090e312ea52bd638730ff76fa111705
+        syncOptions:
+        - CreateNamespace=true
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2023-03-31T07:39:58Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/hello-world-service created
+        name: hello-world-service
+        namespace: test-argocd-namespace
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 904d57e96090e312ea52bd638730ff76fa111705
+      source:
+        path: .
+        repoURL: https://github.com/courses-and-testing/argocd-create-new-namespace.git
+        targetRevision: HEAD
+  reconciledAt: "2023-03-31T07:39:58Z"
+  resources:
+  - kind: Namespace
+    name: test-argocd-namespace
+    status: Synced
+    version: v1
+  - health:
+      status: Progressing
+    kind: Service
+    name: hello-world-service
+    namespace: test-argocd-namespace
+    status: Synced
+    version: v1
+  - group: extensions
+    health:
+      status: Missing
+    kind: Deployment
+    name: hello-world
+    namespace: test-argocd-namespace
+    status: OutOfSync
+    version: v1beta1
+  sourceType: Directory
+  summary: {}
+  sync:
+    comparedTo:
+      destination:
+        namespace: test-argocd-namespace
+        server: https://kubernetes.default.svc
+      source:
+        path: .
+        repoURL: https://github.com/courses-and-testing/argocd-create-new-namespace.git
+        targetRevision: HEAD
+    revision: 904d57e96090e312ea52bd638730ff76fa111705
+    status: OutOfSync

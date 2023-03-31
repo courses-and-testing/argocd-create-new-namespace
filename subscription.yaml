@@ -1,0 +1,83 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  creationTimestamp: "2023-03-29T10:24:14Z"
+  generation: 3
+  labels:
+    operators.coreos.com/openshift-gitops-operator.openshift-operators: ""
+  name: openshift-gitops-operator
+  namespace: openshift-operators
+  resourceVersion: "127741"
+  uid: 93bebdad-1682-4974-b3ea-9b5e01677db4
+spec:
+  channel: latest
+  config:
+    env:
+    - name: ARGOCD_CLUSTER_CONFIG_NAMESPACES
+      value: openshift-gitops, paas-gitops
+  installPlanApproval: Automatic
+  name: openshift-gitops-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: openshift-gitops-operator.v1.8.1
+status:
+  catalogHealth:
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: certified-operators
+      namespace: openshift-marketplace
+      resourceVersion: "38950"
+      uid: 4e52abcc-f4c8-48d4-a558-79e257978d35
+    healthy: true
+    lastUpdated: "2023-03-29T10:24:15Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: community-operators
+      namespace: openshift-marketplace
+      resourceVersion: "36483"
+      uid: e9a5d72e-0460-4f35-88bc-9ccfc0e928ea
+    healthy: true
+    lastUpdated: "2023-03-29T10:24:15Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: redhat-marketplace
+      namespace: openshift-marketplace
+      resourceVersion: "39059"
+      uid: d5c85fcc-fd65-4005-bdc5-d8cb99ee579d
+    healthy: true
+    lastUpdated: "2023-03-29T10:24:15Z"
+  - catalogSourceRef:
+      apiVersion: operators.coreos.com/v1alpha1
+      kind: CatalogSource
+      name: redhat-operators
+      namespace: openshift-marketplace
+      resourceVersion: "36777"
+      uid: 778f278c-64df-42ba-98a0-0f4c37edb27b
+    healthy: true
+    lastUpdated: "2023-03-29T10:24:15Z"
+  conditions:
+  - lastTransitionTime: "2023-03-29T10:24:15Z"
+    message: all available catalogsources are healthy
+    reason: AllCatalogSourcesHealthy
+    status: "False"
+    type: CatalogSourcesUnhealthy
+  currentCSV: openshift-gitops-operator.v1.8.1
+  installPlanGeneration: 1
+  installPlanRef:
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: InstallPlan
+    name: install-k4rzq
+    namespace: openshift-operators
+    resourceVersion: "39591"
+    uid: 5141b4bc-d10e-4ad5-8b50-c6e653b7ac7a
+  installedCSV: openshift-gitops-operator.v1.8.1
+  installplan:
+    apiVersion: operators.coreos.com/v1alpha1
+    kind: InstallPlan
+    name: install-k4rzq
+    uuid: 5141b4bc-d10e-4ad5-8b50-c6e653b7ac7a
+  lastUpdated: "2023-03-31T07:28:56Z"
+  state: AtLatestKnown
